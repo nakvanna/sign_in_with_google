@@ -8,6 +8,8 @@ A new Flutter project.
 > - [firebase_auth](https://pub.dev/packages/firebase_auth). Store information
 > - [google_sign_in](https://pub.dev/packages/google_sign_in). Register with google
 
+### Can learn from [here](https://firebase.flutter.dev/docs/auth/social#google).
+
 ## What you need to do...
   - Register your app to [firebase](https://console.firebase.google.com/). Don't foreget to add keystore!
 
