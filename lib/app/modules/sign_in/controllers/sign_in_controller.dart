@@ -5,21 +5,14 @@ import 'package:sign_in_with_google/app/routes/app_pages.dart';
 
 class SignInController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: [
-      'email',
-    ],
-  );
+  late GoogleSignIn _googleSignIn;
 
   get isNotLogin => _auth.currentUser.isNull;
 
   ///Check if login or not
   @override
   void onInit() {
-    _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
-      print(account);
-    });
-    _googleSignIn.signInSilently();
+    _googleSignIn = GoogleSignIn();
     super.onInit();
   }
 
@@ -29,26 +22,27 @@ class SignInController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    _googleSignIn.disconnect();
+  }
 
   Future<void> googleSignIn() async {
-    try {
-      final GoogleSignInAccount? googleSignIn = await _googleSignIn.signIn();
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
-      final GoogleSignInAuthentication googleAuth =
-          await googleSignIn!.authentication;
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        idToken: googleAuth.idToken,
-        accessToken: googleAuth.accessToken,
-      );
-      print('After process $googleSignIn');
-      await _auth
-          .signInWithCredential(credential)
-          .then((value) => Get.offAllNamed(Routes.HOME));
-    } catch (error) {
-      print(error);
-      Get.snackbar('Google sign-in error', '$error');
-    }
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, UserCredential Sign-in
+    await _auth.signInWithCredential(credential);
+    Get.offAllNamed(Routes.HOME);
   }
 
   Future<void> googleSignOut() async {
