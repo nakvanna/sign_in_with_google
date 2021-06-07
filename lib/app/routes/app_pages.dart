@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:sign_in_with_google/app/modules/home/bindings/home_binding.dart';
 import 'package:sign_in_with_google/app/modules/home/views/home_view.dart';
+import 'package:sign_in_with_google/app/modules/sign_in/bindings/sign_in_binding.dart';
+import 'package:sign_in_with_google/app/modules/sign_in/views/sign_in_view.dart';
 
 part 'app_routes.dart';
 
@@ -15,6 +17,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGN_IN,
+      page: () => SignInView(),
+      binding: SignInBinding(),
     ),
   ];
 }
