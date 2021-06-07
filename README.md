@@ -8,6 +8,9 @@ A new Flutter project.
 > - [firebase_auth](https://pub.dev/packages/firebase_auth).
 > - [google_sign_in](https://pub.dev/packages/google_sign_in).
 
+## What you need to do...
+  - Register your app to [firebase](https://console.firebase.google.com/). Don't foreget to add keystore!
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
