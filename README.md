@@ -2,6 +2,12 @@
 
 A new Flutter project.
 
+## Package Using
+> - [Get CLI](https://pub.dev/packages/get_cli/install). Using for generator.
+> - [firebase_core](https://pub.dev/packages/firebase_core).
+> - [firebase_auth](https://pub.dev/packages/firebase_auth).
+> - [google_sign_in](https://pub.dev/packages/google_sign_in).
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
