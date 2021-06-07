@@ -1,4 +1,4 @@
-# sign_in_with_google
+# Sign In with Google
 
 A new Flutter project.
 
