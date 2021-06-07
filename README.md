@@ -4,9 +4,9 @@ A new Flutter project.
 
 ## Package Using
 > - [Get CLI](https://pub.dev/packages/get_cli/install). Using for generator.
-> - [firebase_core](https://pub.dev/packages/firebase_core).
-> - [firebase_auth](https://pub.dev/packages/firebase_auth).
-> - [google_sign_in](https://pub.dev/packages/google_sign_in).
+> - [firebase_core](https://pub.dev/packages/firebase_core). Initialization
+> - [firebase_auth](https://pub.dev/packages/firebase_auth). Store information
+> - [google_sign_in](https://pub.dev/packages/google_sign_in). Register with google
 
 ## What you need to do...
   - Register your app to [firebase](https://console.firebase.google.com/). Don't foreget to add keystore!
