@@ -14,13 +14,15 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Center(
         child: Text(
-          'HomeView is working',
+          controller.username,
           style: TextStyle(fontSize: 20),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.toNamed(Routes.SIGN_IN),
-        label: Text('Go to SignIn'),
+        onPressed: () => Get.offAllNamed(Routes.SIGN_IN),
+        label: Text(
+          controller.isNotLogin ? 'Go to SignIn' : 'Go to signOut',
+        ),
       ),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  final count = 0.obs;
+  get isNotLogin => _auth.currentUser.isNull;
+  get username =>
+      isNotLogin ? 'Not register yet' : _auth.currentUser!.displayName!;
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +19,4 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

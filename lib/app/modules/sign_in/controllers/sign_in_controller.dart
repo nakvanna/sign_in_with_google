@@ -10,6 +10,10 @@ class SignInController extends GetxController {
       'email',
     ],
   );
+
+  get isNotLogin => _auth.currentUser.isNull;
+
+  ///Check if login or not
   @override
   void onInit() {
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
@@ -50,6 +54,8 @@ class SignInController extends GetxController {
   Future<void> googleSignOut() async {
     try {
       await _googleSignIn.signOut();
+      await _auth.signOut();
+      Get.offAllNamed(Routes.HOME);
     } catch (error) {
       Get.snackbar('Google sign-out error', '$error');
     }

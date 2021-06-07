@@ -12,12 +12,21 @@ class SignInView extends GetView<SignInController> {
         centerTitle: true,
       ),
       body: Center(
-        child: MaterialButton(
-          elevation: 10,
-          onPressed: () => controller.googleSignIn(),
-          color: Colors.indigoAccent,
-          splashColor: Colors.purple,
-          child: Text('Google Sign IN'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MaterialButton(
+              elevation: 10,
+              onPressed: () => controller.isNotLogin
+                  ? controller.googleSignIn()
+                  : controller.googleSignOut(),
+              color: controller.isNotLogin ? Colors.indigoAccent : Colors.red,
+              splashColor: Colors.purple,
+              child: Text(
+                controller.isNotLogin ? 'Google Sign IN' : 'Google Sign Out',
+              ),
+            ),
+          ],
         ),
       ),
     );
